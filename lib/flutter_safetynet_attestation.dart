@@ -10,7 +10,7 @@ class FlutterSafetynetAttestation {
   static const MethodChannel _channel =
       const MethodChannel('g123k/flutter_safetynet_attestation');
 
-  static Future<GooglePlayServicesAvailability>
+  static Future<GooglePlayServicesAvailability?>
       googlePlayServicesAvailability() async {
     final String result =
         await _channel.invokeMethod('checkGooglePlayServicesAvailability');

@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  GooglePlayServicesAvailability _gmsStatus;
+  GooglePlayServicesAvailability? _gmsStatus;
 
   @override
   void initState() {
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPlatformState() async {
-    GooglePlayServicesAvailability gmsAvailability;
+    GooglePlayServicesAvailability? gmsAvailability;
     try {
       gmsAvailability =
           await FlutterSafetynetAttestation.googlePlayServicesAvailability();
@@ -100,14 +100,14 @@ class _SafetyNetAttestationWidgetState
               'nonce');
 
       dialogTitle = 'SafetyNet Attestation Payload';
-      dialogMessage = res?.toString();
+      dialogMessage = res.toString();
     } catch (e) {
       dialogTitle = 'ERROR - SafetyNet Attestation Payload';
 
       if (e is PlatformException) {
-        dialogMessage = e.message;
+        dialogMessage = e.message ?? '';
       } else {
-        dialogMessage = e?.toString();
+        dialogMessage = e.toString();
       }
     }
 
